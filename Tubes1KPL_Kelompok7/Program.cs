@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Windows.Forms;
+using Tubes1KPL_Kelompok7;
 
-namespace Tubes1KPL_Kelompok7
+namespace HalamanUtama
 {
-    public class Program
+    static class Program
     {
-        public static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Login());
         }
     }
 }
