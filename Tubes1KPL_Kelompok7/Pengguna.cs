@@ -85,11 +85,11 @@ namespace Tubes1KPL_Kelompok7
             dataTable.Columns.Add("Email");
             dataTable.Columns.Add("Password");
 
-            dataTable.Rows.Add("Lovanto", "087823837566", "Bandung", "Lovanto@gmail.com", "Lovanto");
-            dataTable.Rows.Add("Gilang", "087823837566", "Sukabumi", "Gilang@gmail.com", "Gilang123");
-            dataTable.Rows.Add("Adam", "087823837566", "Sumedang", "Adam@gmail.com", "Adam123");
-            dataTable.Rows.Add("Ramadhan", "087823837566", "Lombok", "Ramadhan@gmail.com", "Ramadhan123");
-            dataTable.Rows.Add("Dzakwan", "087823837566", "Lampung", "Dzakwan@gmail.com", "Dzakwan123");
+            dataTable.Rows.Add("ricky", "082129211422", "Sumedang", "rickyrohaendi1@gmail.com", " ricky123");
+            dataTable.Rows.Add("rizky", "081321852944", "Bandung", "muhammad.rizky.khomeini@gmail.com", "rizky123");
+            dataTable.Rows.Add("faza", "081234664826", "Solo", "fazaalexander@gmail.com", "faza123");
+            dataTable.Rows.Add("baso", "085241606196", "Makassar", "basoarif@gmail.com", "baso123");
+            dataTable.Rows.Add("rafi", "089617841036", "Padang", "rafiridel@gmail.com", "rafi123");
         }
 
         // Method yang dijalankan ketika Pengguna.cs dalam posisi show.
