@@ -1,0 +1,29 @@
+[
+  {
+    "Tanggal": "17/06/2022 22:49:31",
+    "ID Transaksi": "1234",
+    "Nama Jasa": "Test Jasa",
+    "Deskripsi": "Deskripsi Test Jasa",
+    "Berat (Kg)": "2",
+    "Ongkir": "2000",
+    "Total Bayar": "12000"
+  },
+  {
+    "Tanggal": "17/06/2022 22:52:33",
+    "ID Transaksi": "2",
+    "Nama Jasa": "Jasa Laundry Sukapura",
+    "Deskripsi": "Baju, Celana Pendek, Celana Panjang",
+    "Berat (Kg)": "8",
+    "Ongkir": "8000",
+    "Total Bayar": "52000"
+  },
+  {
+    "Tanggal": "17/06/2022 22:53:08",
+    "ID Transaksi": "3",
+    "Nama Jasa": "Jasa Laundry Sukabirus",
+    "Deskripsi": "Baju, Jaket, Celana Panjang",
+    "Berat (Kg)": "10",
+    "Ongkir": "10000",
+    "Total Bayar": "72000"
+  }
+]
