@@ -1,0 +1,37 @@
+[
+  {
+    "Username": "rizky",
+    "No Telp": "081321852944",
+    "Alamat": "Bandung",
+    "Email": "muhammad.rizky.khomeini@gmail.com",
+    "Password": "rizky123"
+  },
+  {
+    "Username": "ricky",
+    "No Telp": "082129211422",
+    "Alamat": "Sumedang",
+    "Email": "rickyrohaendi1@gmail.com",
+    "Password": "ricky123"
+  },
+  {
+    "Username": "rafi",
+    "No Telp": "089617841036",
+    "Alamat": "Padang",
+    "Email": "rafiridel@gmail.com",
+    "Password": "rafi123"
+  },
+  {
+    "Username": "baso",
+    "No Telp": "085241606196",
+    "Alamat": "Makassar",
+    "Email": "basoarif@gmail.com",
+    "Password": "baso123"
+  },
+  {
+    "Username": "faza",
+    "No Telp": "081234664826",
+    "Alamat": "Solo",
+    "Email": "fazaalexander@gmail.com",
+    "Password": "faza123"
+  }
+]
