@@ -14,12 +14,13 @@ namespace Tubes_KPL
         public string pathTransaksi = @"../../../json/InputTransaksi.json";
         public string pathJasa = @"../../../json/InputJasa.json";
         public string pathMoney = @"../../../json/MoneyConfig.json";
-        private moneyConfig money;
         Automata.State posisi = Automata.State.INPUT_TRANSAKSI, nextPosisi;
 
         public InputTransaksi()
         {
             InitializeComponent();
+            tbTanggal.Text = tglSekarang.ToString();
+            setComboboxNamaJasa();
 
             // Membaca file InputTransaksi.json.
             try
@@ -36,7 +37,6 @@ namespace Tubes_KPL
             }
 
             // Tampilkan data dari InputTransaksi.json
-            dgvTransaksi.DataSource = dtTransaksi;
         }
 
         // Membuat Data palsu untuk JSON.
@@ -49,56 +49,12 @@ namespace Tubes_KPL
             dtTransaksi.Columns.Add("Berat (Kg)");
             dtTransaksi.Columns.Add("Ongkir");
             dtTransaksi.Columns.Add("Total Bayar");
-            dtTransaksi.Rows.Add(DateTime.Now, "1234", "Test Jasa", "Deskripsi Test Jasa", "2", "5000", "15000");
+            dtTransaksi.Rows.Add(DateTime.Now, "1", "Jasa Laundry Sukapura", "Baju", "2", "2000", "12000");
         }
 
         // Method yang dijalankan ketika InputTransaksi.cs dalam posisi show.
         private void Form1_Load(object sender, EventArgs e)
         {
-            setEditEnabled(false);
-            btnNew.Enabled = true;
-            tbTanggal.Text = tglSekarang.ToString();
-            setComboboxNamaJasa();
-
-            // Membaca file MoneyConfig.json dan menyimpan ke var money.
-            money = Config.ReadFromJson<moneyConfig>(pathDir + pathMoney);
-
-            // Set tampilan text pada LbMoney.
-            if (money.getMoneyConfig() == "Rupiah")
-            {
-                LbMoney.Text = "Mata Uang : Rupiah";
-            }
-            else
-            {
-                LbMoney.Text = "Mata Uang : USD";
-            }
-            convertMataUang();
-        }
-
-        // Mengaktifkan/Menonaktifkan sebagian tombol dan text box.
-        private void setEditEnabled(bool stat)
-        {
-            btnSimpan.Enabled = stat;
-            btnBatal.Enabled = true;
-            btnNew.Enabled = stat;
-            cbNamaJasa.Enabled = stat;
-            tbBerat.Enabled = stat;
-            tbDeskripsi.Enabled = stat;
-            tbIDTransaksi.Enabled = stat;
-            tbOngkir.Enabled = stat;
-            tbTotal.Enabled = stat;
-            tbTanggal.Enabled = false;
-        }
-
-        // Untuk me-reset text yang sudah diinputkan pada text box.
-        private void clearText()
-        {
-            tbIDTransaksi.Text = "";
-            tbBerat.Text = "";
-            tbOngkir.Text = "";
-            tbTotal.Text = "";
-            tbDeskripsi.Text = "";
-            cbNamaJasa.Text = "";
         }
 
         // Untuk mencari harga jasa.
@@ -108,6 +64,12 @@ namespace Tubes_KPL
             dtJasa = Config.ReadFromJson<DataTable>(pathDir + pathJasa);
             int harga = Int32.Parse(dtJasa.Rows[cbNamaJasa.SelectedIndex][2].ToString());
             return harga;
+        }
+
+        private int hitungOngkir(int berat)
+        {
+            int ongkir = berat * 1000;
+            return ongkir;
         }
 
         // Untuk menghitung total bayar.
@@ -143,14 +105,6 @@ namespace Tubes_KPL
             cbNamaJasa.DisplayMember = "Nama Jasa";
         }
 
-        // Ketika btnNew di klik, maka akan memanggil beberapa method dan menonaktifkan sebagian tombol dan text box.
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            clearText();
-            setEditEnabled(true);
-            btnNew.Enabled = false;
-            tbTotal.Enabled = false;
-        }
 
         // Ketika btnSimpan di klik, akan menyimpan data yang diinput kedalam dgvTransaksi.
         private void btnSimpan_Click(object sender, EventArgs e)
@@ -158,22 +112,17 @@ namespace Tubes_KPL
             // Membuat List.
             List<InputTransaksiModel> transaksi = new List<InputTransaksiModel>();
 
-            // Set button dan text box.
-            setEditEnabled(false);
-            btnNew.Enabled = true;
-
             // Set dan ambil nilai dari input user.
             int idTransaksi = Int32.Parse(tbIDTransaksi.Text);
             String namaJasa = cbNamaJasa.Text;
             String deskripsi = tbDeskripsi.Text;
             int berat = Int32.Parse(tbBerat.Text);
-            int ongkir = Int32.Parse(tbOngkir.Text);
-            int totalBayar = hitungTotal(berat, cariHargaJasa(), ongkir);
-            tbTotal.Text = totalBayar.ToString();
+            int totalOngkir = hitungOngkir(berat);
+            int totalBayar = hitungTotal(berat, cariHargaJasa(), totalOngkir);
 
             // Memasukan data kedalam list.
             transaksi.Add(new InputTransaksiModel(tglSekarang, idTransaksi, namaJasa, deskripsi,
-                berat, ongkir, totalBayar));
+                berat, totalOngkir, totalBayar));
 
             // Mengisi tabel data dengan data dari list.
             for (int i = 0; i < transaksi.Count; i++)
@@ -188,43 +137,33 @@ namespace Tubes_KPL
                     transaksi[i].getTotalBayar().ToString()
                     );
             }
-
-            // Menampilkan data ke UI.
-            dgvTransaksi.DataSource = dtTransaksi;
-
             // Simpan dan update data ke file InputTransaksi.json.
             Config.SaveToJson<DataTable>(dtTransaksi, pathDir + pathTransaksi);
+
+            nextPosisi = Automata.State.DATA_TRANSAKSI;
+            Automata.setPosisi(posisi, nextPosisi);
+            Automata.posisiTransition(nextPosisi);
+            this.Hide();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbDeskripsi_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         // Ketika btnBatal di klik, maka mengosongkan semua textBox, menonaktifkan sebagian tombol,
         // lalu menutup UI InputTransaksi dan menampikan UI dashboard.
         private void btnBatal_Click(object sender, EventArgs e)
         {
-            clearText();
-            setEditEnabled(false);
-            btnNew.Enabled = true;
-            this.Hide();
-
-            nextPosisi = Automata.State.DASHBOARD;
+            nextPosisi = Automata.State.DATA_TRANSAKSI;
             Automata.setPosisi(posisi, nextPosisi);
             Automata.posisiTransition(nextPosisi);
-        }
-
-        // Untuk mengubah mata uang dari Rupiah ke USD dan sebaliknya.
-        public void convertMataUang()
-        {
-            // Membaca file MoneyConfig.json.
-            money = Config.ReadFromJson<moneyConfig>(pathDir + pathMoney);
-
-            // Merubah data ongkir dan total dari Rupiah ke USD atau sebaliknya.
-            if (money.getMoneyConfig() == "USD")
-            {
-                for (int i = 0; i < dgvTransaksi.RowCount - 1; i++)
-                {
-                    dgvTransaksi.Rows[i].Cells[5].Value = (Double.Parse(dgvTransaksi.Rows[0 + i].Cells[5].Value.ToString()) / 14000).ToString().Substring(0, 4);
-                    dgvTransaksi.Rows[i].Cells[6].Value = (Double.Parse(dgvTransaksi.Rows[0 + i].Cells[6].Value.ToString()) / 14000).ToString().Substring(0, 4);
-                }
-            }
+            this.Hide();
         }
 
     }

@@ -62,7 +62,7 @@ namespace Tubes_KPL
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(103, 31);
             this.btnNew.TabIndex = 37;
-            this.btnNew.Text = "New";
+            this.btnNew.Text = "Add New";
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
@@ -97,7 +97,7 @@ namespace Tubes_KPL
             this.btnBatal.Name = "btnBatal";
             this.btnBatal.Size = new System.Drawing.Size(108, 31);
             this.btnBatal.TabIndex = 40;
-            this.btnBatal.Text = "Batal";
+            this.btnBatal.Text = "Back";
             this.btnBatal.UseVisualStyleBackColor = false;
             this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 

@@ -33,5 +33,12 @@
     "Alamat": "Solo",
     "Email": "fazaalexander@gmail.com",
     "Password": "faza123"
+  },
+  {
+    "Username": "coba",
+    "No Telp": "081234567890",
+    "Alamat": "disini",
+    "Email": "coba@coba.coba",
+    "Password": "coba123"
   }
 ]

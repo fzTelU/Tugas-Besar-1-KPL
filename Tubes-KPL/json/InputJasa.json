@@ -1,16 +1,16 @@
 [
   {
-    "Nama Toko": "Toko Sukses",
-    "Nama Jasa": "Test Jasa",
+    "Nama Toko": "Laundry Sukapura",
+    "Nama Jasa": "Jasa Laundry Sukapura",
     "Harga": "5500",
     "Jumlah Paket": "1",
-    "Deskripsi Jasa": "Deskripsi Test"
+    "Deskripsi Jasa": "Laundry 1 hari jadi ygy"
   },
   {
-    "Nama Toko": "Toko Gagal",
-    "Nama Jasa": "Jasa",
-    "Harga": "6000",
-    "Jumlah Paket": "3",
-    "Deskripsi Jasa": "Deskripsi jasa"
+    "Nama Toko": "Laundry Sukabirus",
+    "Nama Jasa": "Jasa Laundry Sukabirus",
+    "Harga": "6200",
+    "Jumlah Paket": "5",
+    "Deskripsi Jasa": "Jasa Laundry Sekitar Sukabirus"
   }
 ]

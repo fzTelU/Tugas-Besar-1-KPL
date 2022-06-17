@@ -10,8 +10,6 @@ namespace Tubes_KPL
         // Inisialisasi variabel dan memberikan value pada variabel tertentu.
         private string path = Environment.CurrentDirectory;
         private string pathJSON = @"../../../json/InputJasa.json";
-        private string pathMoney = @"../../../json/MoneyConfig.json";
-        private moneyConfig money;
         DataTable dtJasa = new DataTable();
         Automata.State posisi = Automata.State.INPUT_JASA, nextPosisi;
 
@@ -19,7 +17,7 @@ namespace Tubes_KPL
         {
             InitializeComponent();
 
-            // Memanggil data dari json (Deserialisasi) untuk ditampilkan pada tabrl data grid view.
+            // Memanggil data dari json (Deserialisasi) untuk ditampilkan pada tabel data grid view.
             try
             {
                 dtJasa = Config.ReadFromJson<DataTable>(path + pathJSON);
@@ -29,9 +27,6 @@ namespace Tubes_KPL
                 DummyData();
                 Config.SaveToJson<DataTable>(dtJasa, path + pathJSON);
             }
-            
-            dgvJasa.DataSource = dtJasa;
-            convertMataUang();
         }
 
         // Menggunakan dummy data untuk menampilkan data jika tidak ada file export (Serialisasi).
@@ -43,51 +38,21 @@ namespace Tubes_KPL
             dtJasa.Columns.Add("Jumlah Paket");
             dtJasa.Columns.Add("Deskripsi Jasa");
 
-            dtJasa.Rows.Add("Toko Sukses", "Test Jasa", "5500", "1", "Deskripsi Test");
+            dtJasa.Rows.Add("Laundry Sukapura", "Jasa Laundry", "5500", "1", "Laundry 1 hari jadi ygy");
         }
 
         // Action pada button batal untuk membatalkan inputan jasa dan kembali ke dashboard.
         private void btnBatal_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            nextPosisi = Automata.State.DASHBOARD;
+            nextPosisi = Automata.State.DATA_JASA;
             Automata.setPosisi(posisi, nextPosisi);
             Automata.posisiTransition(nextPosisi);
+            this.Hide();
         }
 
-        // Memberikan Enablization pada button yang diperlukan ketika menginput data jasa.
         private void InputJasa_Load(object sender, EventArgs e)
         {
-            btnBatal.Enabled = true;
-            btnSimpan.Enabled = false;
-            tbNamaToko.Enabled = false;
-            tbNamaJasa.Enabled = false;
-            tbHarga.Enabled = false;
-            tbJlhPaket.Enabled = false;
-            tbDeskripsi.Enabled = false;
 
-            money = Config.ReadFromJson<moneyConfig>(path + pathMoney);
-            if (money.getMoneyConfig() == "Rupiah")
-            {
-                LbMoney.Text = "Mata Uang : Rupiah";
-            }
-            else
-            {
-                LbMoney.Text = "Mata Uang : USD";
-            }
-        }
-
-        // Memberikan Enablization pada button tertentu jika mengklik button new.
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            btnBatal.Enabled = true;
-            btnSimpan.Enabled = true;
-            tbNamaToko.Enabled = true;
-            tbNamaJasa.Enabled = true;
-            tbHarga.Enabled = true;
-            tbJlhPaket.Enabled = true;
-            tbDeskripsi.Enabled = true;
-            btnNew.Enabled = false;
         }
 
         // Memberikan action menyimpan data yang telah terisi pada form untuk diserialisasi (Export).
@@ -124,13 +89,12 @@ namespace Tubes_KPL
                         jasa[i].getDeskripsi().ToString()
                         );
                 }
-
-                dgvJasa.DataSource = dtJasa;
-
                 Config.SaveToJson<DataTable>(dtJasa, path + pathJSON);
-                btnNew.Enabled = true;
-                btnSimpan.Enabled = false;
             }
+            nextPosisi = Automata.State.DATA_JASA;
+            Automata.setPosisi(posisi, nextPosisi);
+            Automata.posisiTransition(nextPosisi);
+            this.Hide();
         }
 
         private void tbHarga_TextChanged(object sender, EventArgs e)
@@ -138,20 +102,10 @@ namespace Tubes_KPL
 
         }
 
-        // Mengonversi nilai atau value dari data number menjadi USD yang secara default adalah rupiah.
-        public void convertMataUang()
+        private void label1_Click(object sender, EventArgs e)
         {
-            money = Config.ReadFromJson<moneyConfig>(path + pathMoney);
-            if (money.getMoneyConfig() == "USD")
-            {
-                for (int i = 0; i < dgvJasa.RowCount-1; i++)
-                {
-                    dgvJasa.Rows[i].Cells[2].Value = (Double.Parse(dgvJasa.Rows[0+i].Cells[2].Value.ToString())/14000).ToString().Substring(0, 4);
-                }
-            }
-        }
 
-        
+        }    
 
     }
 }

@@ -5,7 +5,6 @@ namespace Tubes_KPL
 {
     public partial class Dashboard : Form
     {
-        Form currentChildForm;
         String path = Environment.CurrentDirectory;
         String pathMoney = @"../../../json/MoneyConfig.json";
         moneyConfig money;
@@ -40,7 +39,7 @@ namespace Tubes_KPL
         // Bottom data transaksi.
         private void btnDataTransaksi_Click(object sender, EventArgs e) 
         {
-            nextPosisi = Automata.State.INPUT_TRANSAKSI;
+            nextPosisi = Automata.State.DATA_TRANSAKSI;
             Automata.setPosisi(posisi, nextPosisi);
             Automata.posisiTransition(nextPosisi);
             this.Hide();
@@ -49,7 +48,7 @@ namespace Tubes_KPL
         // Bottom data jasa.
         private void btnDataJasa_Click(object sender, EventArgs e) 
         {
-            nextPosisi = Automata.State.INPUT_JASA;
+            nextPosisi = Automata.State.DATA_JASA;
             Automata.setPosisi(posisi, nextPosisi);
             Automata.posisiTransition(nextPosisi);
             this.Hide();
@@ -97,6 +96,16 @@ namespace Tubes_KPL
         {
             lblClock.Text = DateTime.Now.ToString("HH:mm:ss");
             lblDate.Text = DateTime.Now.ToString("dddd dd MMM yyyy");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Keluar?", "Logout", MessageBoxButtons.YesNo);
+            // Kondisi message box Yes/No.
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void comboBoxMoney_SelectedIndexChanged(object sender, EventArgs e)

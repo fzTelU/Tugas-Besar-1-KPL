@@ -53,8 +53,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Automata.cs" />
-    <Compile Include="ClassTestExistingFile.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="DataJasa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataJasa.Designer.cs">
+      <DependentUpon>DataJasa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransaksi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataTransaksi.Designer.cs">
+      <DependentUpon>DataTransaksi.cs</DependentUpon>
+    </Compile>
     <Compile Include="moneyConfig.cs" />
     <Compile Include="PenggunaModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -106,6 +117,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataJasa.resx">
+      <DependentUpon>DataJasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataTransaksi.resx">
+      <DependentUpon>DataTransaksi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputTransaksi.resx">
       <DependentUpon>InputTransaksi.cs</DependentUpon>
@@ -167,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

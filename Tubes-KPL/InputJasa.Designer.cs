@@ -29,7 +29,6 @@ namespace Tubes_KPL
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvJasa = new System.Windows.Forms.DataGridView();
             this.tbHarga = new System.Windows.Forms.TextBox();
             this.tbDeskripsi = new System.Windows.Forms.TextBox();
             this.tbNamaJasa = new System.Windows.Forms.TextBox();
@@ -37,33 +36,17 @@ namespace Tubes_KPL
             this.tbNamaToko = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSimpan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbJlhPaket = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBatal = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.LbMoney = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelInputJasa = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJasa)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelInputJasa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvJasa
-            // 
-            this.dgvJasa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvJasa.BackgroundColor = System.Drawing.Color.White;
-            this.dgvJasa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJasa.Location = new System.Drawing.Point(424, 110);
-            this.dgvJasa.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvJasa.Name = "dgvJasa";
-            this.dgvJasa.RowHeadersWidth = 51;
-            this.dgvJasa.Size = new System.Drawing.Size(623, 225);
-            this.dgvJasa.TabIndex = 22;
             // 
             // tbHarga
             // 
@@ -80,7 +63,7 @@ namespace Tubes_KPL
             this.tbDeskripsi.Margin = new System.Windows.Forms.Padding(4);
             this.tbDeskripsi.Multiline = true;
             this.tbDeskripsi.Name = "tbDeskripsi";
-            this.tbDeskripsi.Size = new System.Drawing.Size(264, 85);
+            this.tbDeskripsi.Size = new System.Drawing.Size(837, 85);
             this.tbDeskripsi.TabIndex = 17;
             // 
             // tbNamaJasa
@@ -88,7 +71,7 @@ namespace Tubes_KPL
             this.tbNamaJasa.Location = new System.Drawing.Point(133, 155);
             this.tbNamaJasa.Margin = new System.Windows.Forms.Padding(4);
             this.tbNamaJasa.Name = "tbNamaJasa";
-            this.tbNamaJasa.Size = new System.Drawing.Size(264, 22);
+            this.tbNamaJasa.Size = new System.Drawing.Size(837, 22);
             this.tbNamaJasa.TabIndex = 18;
             // 
             // label4
@@ -106,7 +89,7 @@ namespace Tubes_KPL
             this.tbNamaToko.Location = new System.Drawing.Point(133, 110);
             this.tbNamaToko.Margin = new System.Windows.Forms.Padding(4);
             this.tbNamaToko.Name = "tbNamaToko";
-            this.tbNamaToko.Size = new System.Drawing.Size(264, 22);
+            this.tbNamaToko.Size = new System.Drawing.Size(837, 22);
             this.tbNamaToko.TabIndex = 19;
             // 
             // label5
@@ -129,16 +112,6 @@ namespace Tubes_KPL
             this.label3.TabIndex = 13;
             this.label3.Text = "Nama Jasa";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(420, 90);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 16);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Data :";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -151,13 +124,15 @@ namespace Tubes_KPL
             // 
             // btnSimpan
             // 
-            this.btnSimpan.Location = new System.Drawing.Point(279, 367);
+            this.btnSimpan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(180)))), ((int)(((byte)(227)))));
+            this.btnSimpan.ForeColor = System.Drawing.Color.White;
+            this.btnSimpan.Location = new System.Drawing.Point(381, 356);
             this.btnSimpan.Margin = new System.Windows.Forms.Padding(4);
             this.btnSimpan.Name = "btnSimpan";
-            this.btnSimpan.Size = new System.Drawing.Size(100, 28);
+            this.btnSimpan.Size = new System.Drawing.Size(100, 37);
             this.btnSimpan.TabIndex = 9;
             this.btnSimpan.Text = "Simpan";
-            this.btnSimpan.UseVisualStyleBackColor = true;
+            this.btnSimpan.UseVisualStyleBackColor = false;
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
             // label1
@@ -168,16 +143,17 @@ namespace Tubes_KPL
             this.label1.Location = new System.Drawing.Point(498, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 25);
+            this.label1.Size = new System.Drawing.Size(113, 25);
             this.label1.TabIndex = 8;
-            this.label1.Text = "Data Jasa";
+            this.label1.Text = "Input Jasa";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbJlhPaket
             // 
             this.tbJlhPaket.Location = new System.Drawing.Point(348, 203);
             this.tbJlhPaket.Margin = new System.Windows.Forms.Padding(4);
             this.tbJlhPaket.Name = "tbJlhPaket";
-            this.tbJlhPaket.Size = new System.Drawing.Size(49, 22);
+            this.tbJlhPaket.Size = new System.Drawing.Size(622, 22);
             this.tbJlhPaket.TabIndex = 16;
             // 
             // label7
@@ -192,45 +168,28 @@ namespace Tubes_KPL
             // 
             // btnBatal
             // 
-            this.btnBatal.Location = new System.Drawing.Point(424, 367);
+            this.btnBatal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(180)))), ((int)(((byte)(227)))));
+            this.btnBatal.ForeColor = System.Drawing.Color.White;
+            this.btnBatal.Location = new System.Drawing.Point(624, 356);
             this.btnBatal.Margin = new System.Windows.Forms.Padding(4);
             this.btnBatal.Name = "btnBatal";
-            this.btnBatal.Size = new System.Drawing.Size(100, 28);
+            this.btnBatal.Size = new System.Drawing.Size(100, 37);
             this.btnBatal.TabIndex = 10;
             this.btnBatal.Text = "Batal";
-            this.btnBatal.UseVisualStyleBackColor = true;
+            this.btnBatal.UseVisualStyleBackColor = false;
             this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
             // 
-            // btnNew
+            // panelInputJasa
             // 
-            this.btnNew.Location = new System.Drawing.Point(133, 367);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(4);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(100, 28);
-            this.btnNew.TabIndex = 23;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // LbMoney
-            // 
-            this.LbMoney.AutoSize = true;
-            this.LbMoney.Location = new System.Drawing.Point(892, 90);
-            this.LbMoney.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LbMoney.Name = "LbMoney";
-            this.LbMoney.Size = new System.Drawing.Size(82, 16);
-            this.LbMoney.TabIndex = 24;
-            this.LbMoney.Text = "Mata Uang : ";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(180)))), ((int)(((byte)(227)))));
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(2, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1095, 73);
-            this.panel1.TabIndex = 25;
+            this.panelInputJasa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelInputJasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(180)))), ((int)(((byte)(227)))));
+            this.panelInputJasa.Controls.Add(this.pictureBox1);
+            this.panelInputJasa.Controls.Add(this.label1);
+            this.panelInputJasa.Location = new System.Drawing.Point(2, 0);
+            this.panelInputJasa.Name = "panelInputJasa";
+            this.panelInputJasa.Size = new System.Drawing.Size(1095, 73);
+            this.panelInputJasa.TabIndex = 25;
             // 
             // pictureBox1
             // 
@@ -246,11 +205,8 @@ namespace Tubes_KPL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 603);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.LbMoney);
-            this.Controls.Add(this.btnNew);
-            this.Controls.Add(this.dgvJasa);
+            this.ClientSize = new System.Drawing.Size(1095, 404);
+            this.Controls.Add(this.panelInputJasa);
             this.Controls.Add(this.tbJlhPaket);
             this.Controls.Add(this.tbHarga);
             this.Controls.Add(this.tbDeskripsi);
@@ -260,7 +216,6 @@ namespace Tubes_KPL
             this.Controls.Add(this.tbNamaToko);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.btnBatal);
@@ -268,9 +223,8 @@ namespace Tubes_KPL
             this.Name = "InputJasa";
             this.Text = "InputJasa";
             this.Load += new System.EventHandler(this.InputJasa_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJasa)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelInputJasa.ResumeLayout(false);
+            this.panelInputJasa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -278,8 +232,6 @@ namespace Tubes_KPL
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvJasa;
         private System.Windows.Forms.TextBox tbHarga;
         private System.Windows.Forms.TextBox tbDeskripsi;
         private System.Windows.Forms.TextBox tbNamaJasa;
@@ -287,16 +239,13 @@ namespace Tubes_KPL
         private System.Windows.Forms.TextBox tbNamaToko;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSimpan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbJlhPaket;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBatal;
-        private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Label LbMoney;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelInputJasa;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
