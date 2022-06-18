@@ -13,7 +13,7 @@ Tugas Besar 2
 - Table-driven construction
 - Parameterization/generics(Rafi Atha Ridel - 1302204110)
 - Defensive programming/design by contract
-- Parsing
+- Parsing (Ricky Rohaendi - 1302200007)
 - Runtime configuration
-- Code Reuse/library (Ricky Rohaendi - 1302200007)
+- Code Reuse/library 
 - API
