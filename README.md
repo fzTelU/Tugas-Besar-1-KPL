@@ -15,5 +15,5 @@ Tugas Besar 2
 - Defensive programming/design by contract
 - Parsing
 - Runtime configuration
-- Code Reuse/library
+- Code Reuse/library (Ricky Rohaendi - 1302200007)
 - API
