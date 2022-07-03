@@ -1,12 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Tubes_KPL
 {
-    //Adamnn.
-    class Automata
+    public class Automata
     {
         // Attribut pada state.
-        public enum State { LOGIN, REGISTRASI, DASHBOARD, INPUT_PENGGUNA, DATA_JASA, INPUT_JASA, DATA_TRANSAKSI, INPUT_TRANSAKSI, LOGOUT }; 
+        public enum State { LOGIN, REGISTRASI, DASHBOARD, INPUT_PENGGUNA, DATA_JASA, INPUT_JASA, DATA_TRANSAKSI, INPUT_TRANSAKSI, LOGOUT, TEST }; // Faza (Menambahkan state REGISTRASI, DATA_JASA, DATA_TRANSAKSI, TEST)
         public static State posisi, nextPosisi; 
 
         public Automata() { }
@@ -35,13 +35,18 @@ namespace Tubes_KPL
                     Dashboard dashboard = new Dashboard();
                     dashboard.Show();
                 }
-                else if (nextPos == State.REGISTRASI)
+                else if (nextPos == State.REGISTRASI) // Faza
                 {
                     Registrasi registrasi = new Registrasi();
                     registrasi.Show();
                 }
+                else if (nextPos == State.TEST) // Faza
+                {
+                    // Automata untuk testing
+                    Console.WriteLine("Transisi Berhasil");
+                }
             }
-            else if (posisi == State.REGISTRASI)
+            else if (posisi == State.REGISTRASI) // Faza
             {
                 if (nextPos == State.LOGIN)
                 {
@@ -61,14 +66,14 @@ namespace Tubes_KPL
                     Pengguna pengguna = new Pengguna();
                     pengguna.Show();
                 }
-                // Kemudian jika tidak masuk posisi dashboard masuk ke tampilan input jasa.
-                else if (nextPos == State.DATA_JASA) 
+                // Kemudian jika tidak masuk posisi dashboard masuk ke tampilan data jasa.
+                else if (nextPos == State.DATA_JASA) // Faza
                 {
                     DataJasa dataJasa = new DataJasa();
                     dataJasa.Show();
                 }
-                // Kemudian jika tidak masuk posisi dashboard masuk ke tampilan input transaksi.
-                else if (nextPos == State.DATA_TRANSAKSI)
+                // Kemudian jika tidak masuk posisi dashboard masuk ke tampilan data transaksi.
+                else if (nextPos == State.DATA_TRANSAKSI) // Faza
                 {
                     DataTransaksi dataTransaksi = new DataTransaksi();
                     dataTransaksi.Show();
@@ -86,7 +91,7 @@ namespace Tubes_KPL
             }
             else if (posisi == State.INPUT_PENGGUNA)
             {
-                if (nextPos == State.REGISTRASI)
+                if (nextPos == State.REGISTRASI) // Faza
                 {
                     Registrasi registrasi = new Registrasi();
                     registrasi.Show();
@@ -96,7 +101,7 @@ namespace Tubes_KPL
                     dashboard.Show();
                 }
             }
-            else if (posisi == State.DATA_JASA)
+            else if (posisi == State.DATA_JASA) // Faza
             {
                 if (nextPos == State.INPUT_JASA)
                 {
@@ -108,7 +113,7 @@ namespace Tubes_KPL
                     dashboard.Show();
                 }
             }
-            else if (posisi == State.DATA_TRANSAKSI)
+            else if (posisi == State.DATA_TRANSAKSI) // Faza
             {
                 if (nextPos == State.INPUT_TRANSAKSI)
                 {
@@ -135,6 +140,15 @@ namespace Tubes_KPL
                 {
                     DataTransaksi dataTransaksi = new DataTransaksi();
                     dataTransaksi.Show();
+                }
+            }
+            else if (State.TEST == posisi) // Faza
+            {
+                // Automata khusus untuk Unit Testing.
+                // Jika testing automata berhasil dilakukan, maka hal ini juga berlaku untuk seluruh State yang ada pada Automata.
+                if (nextPos == State.LOGIN)
+                {
+                    Console.WriteLine("Transisi Berhasil");
                 }
             }
         }

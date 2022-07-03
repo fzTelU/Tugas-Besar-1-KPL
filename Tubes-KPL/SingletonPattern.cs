@@ -2,7 +2,7 @@
 
 namespace Tubes_KPL
 {
-    //Adamnn.
+
     class SingletonPattern
     {
         // Komponen pada enum status.
