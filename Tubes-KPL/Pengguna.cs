@@ -91,3 +91,38 @@ namespace Tubes_KPL
         }
     }
 }
+
+
+namespace Parsing
+{
+    private string str ="*g(ikh)(abcde3049000halo apa kabar? okeh5986edcbaio test*0iou";
+    private int source = 2;
+    private int destination = 2;
+    private int trailer = 4;
+    private int data = 15;
+    private int crc = 4;
+    private int hlen = 5;
+
+    public Mainforce()
+    {
+        InitializeComponent();
+        textBox1.Text = str;
+    }
+
+    void Parse()
+    {
+        string sou = str.Substring(13, source);
+        string des = str.Substring(15, destination);
+        string tra = str.Substring(37, trailer);
+        string dat = str.Substring(22, data);
+        string cr1 = str.Substring(41, crc);
+        string hle = str.Substring(17, hlen);
+
+        textBox2.Text = sou;
+        textBox3.Text = des;
+        textBox4.Text = tra;
+        textBox5.Text = dat;
+        textBox6.Text = cr1;
+        textBox7.Text = hle;
+    }
+}
